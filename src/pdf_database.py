@@ -30,7 +30,7 @@ import httpx
 import pymupdf                                         # pip install pymupdf
 from bson import ObjectId
 from fastapi import APIRouter, Body, File, Form, HTTPException, UploadFile, Depends
-from sentence_transformers import SentenceTransformer  # pip install sentence-transformers
+from .embeddings import get_embedding_model
 
 from .database import companies_chunks, companies_pdfs, qa_cache_collection
 from routes.auth import get_current_company
@@ -57,12 +57,12 @@ router = APIRouter()
 
 # ── Singletons ────────────────────────────────────────────────────────────────
 
-_embedder: SentenceTransformer | None = None
+_embedder = None
 
-def get_embedder() -> SentenceTransformer:
+def get_embedder():
     global _embedder
     if _embedder is None:
-        _embedder = SentenceTransformer(EMBED_MODEL_NAME)
+        _embedder = get_embedding_model(EMBED_MODEL_NAME)
     return _embedder
 
 

@@ -16,15 +16,9 @@ pymongo
 motor
 
 # ML & Vector Search
-sentence-transformers==3.2.1
-transformers>=4.41,<5.0
-torch==2.11.0
 numpy>=1.26
-scipy
-scikit-learn
 tqdm
 huggingface-hub>=0.23
-safetensors
 
 # PDF Parsing & LangChain
 pymupdf

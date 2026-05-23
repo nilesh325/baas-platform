@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 from fastapi import APIRouter, Form, HTTPException
 from langchain_mistralai import ChatMistralAI
 from langgraph.graph import StateGraph
-from sentence_transformers import SentenceTransformer
+from src.embeddings import get_embedding_model
 
 from src.database import companies_chunks_sync, qa_cache_collection
 
@@ -52,12 +52,12 @@ _RERANK_TOP_K = 5
 
 # ── Singletons ────────────────────────────────────────────────────────────────
 
-_embedder: SentenceTransformer | None = None
+_embedder = None
 
-def get_embedder() -> SentenceTransformer:
+def get_embedder():
     global _embedder
     if _embedder is None:
-        _embedder = SentenceTransformer(_EMBED_MODEL_NAME)
+        _embedder = get_embedding_model(_EMBED_MODEL_NAME)
     return _embedder
 
 
