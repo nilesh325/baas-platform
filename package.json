@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "install": "npm --prefix frontend install",
+    "prebuild": "npm --prefix frontend install",
     "build": "npm --prefix frontend run build",
     "dev": "npm --prefix frontend run dev"
   }
