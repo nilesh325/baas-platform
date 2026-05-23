@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+
+:root {
+  --bg: #050811;
+  --bg-gradient: linear-gradient(135deg, #050811 0%, #0c1020 60%, #020306 100%);
+  --surface: rgba(13, 20, 38, 0.6);
+  --surface2: rgba(22, 33, 58, 0.85);
+  --border: rgba(99, 130, 180, 0.12);
+  --border-hi: rgba(99, 130, 180, 0.28);
+  --accent: #4f7cff;
+  --accent2: #7c3aed;
+  --accent-grad: linear-gradient(135deg, #4f7cff, #7c3aed);
+  --text: #f0f4fc;
+  --muted: #64748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warn: #f59e0b;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-gradient);
+  color: var(--text);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient glow orbs */
+body::before {
+  content: '';
+  position: fixed;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79, 124, 255, 0.08) 0%, transparent 65%);
+  top: -250px;
+  left: -200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 65%);
+  bottom: -150px;
+  right: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle grid texture overlay */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-card-hover:hover {
+  border-color: var(--border-hi);
+  background: var(--surface2);
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(5, 8, 17, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 130, 180, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 130, 180, 0.4);
+}

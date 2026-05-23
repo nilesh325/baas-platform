@@ -1,0 +1,10 @@
+{
+  "name": "baas-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install": "npm --prefix frontend install",
+    "build": "npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev"
+  }
+}

@@ -1,0 +1,30 @@
+# Environments & API Keys
+.env
+.env.*
+venv/
+.venv/
+env/
+
+# Dependency directories
+node_modules/
+
+# Python caches & build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Local databases and vector caches
+faiss_indexes/
+/tmp/faiss_cache/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini
