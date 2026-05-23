@@ -21,10 +21,12 @@ class HuggingFaceApiEmbedder:
         self.token = os.getenv("HF_TOKEN")
 
     def encode(self, texts: list[str], batch_size: int = 32, show_progress_bar: bool = False) -> np.ndarray:
-        if not self.token:
-            raise RuntimeError("HF_TOKEN environment variable is missing. Cannot request embeddings from Hugging Face.")
+        headers = {}
+        if self.token:
+            headers["Authorization"] = f"Bearer {self.token}"
+        else:
+            print("[HF Embeddings] Warning: HF_TOKEN is missing. Attempting unauthenticated request...")
         
-        headers = {"Authorization": f"Bearer {self.token}"}
         results = []
         
         # Process in batches to stay within Hugging Face API payload guidelines
