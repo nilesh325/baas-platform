@@ -31,8 +31,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount compiled Vite React static assets
-app.mount("/static", StaticFiles(directory="frontend/dist"), name="static")
+# Mount compiled Vite React static assets if directory exists
+if os.path.exists("frontend/dist"):
+    app.mount("/static", StaticFiles(directory="frontend/dist"), name="static")
+else:
+    print("[Warning] 'frontend/dist' directory not found. Static files routing is disabled.")
 
 # Include backend API/page routes
 app.include_router(companies_router)
@@ -49,4 +52,8 @@ async def catch_all(catchall: str):
     # Exclude standard API prefixes to allow proper API 404 responses
     if any(catchall.startswith(prefix) for prefix in ["api/", "auth/", "company/", "tickets/", "raised/", "upload"]):
         return {"detail": "Not Found"}
-    return FileResponse("frontend/dist/index.html")
+    
+    if os.path.exists("frontend/dist/index.html"):
+        return FileResponse("frontend/dist/index.html")
+        
+    return {"status": "BAAS API is running successfully"}
