@@ -141,3 +141,7 @@ When presenting this project to interviewers, be sure to highlight these three e
 1.  **Logical Multi-Tenant Security**: *"To prevent cross-tenant data leaks, we implemented strict database query logical filters. Every ticket and vector document is strictly mapped via `company_id` validated directly from the JWT signature on the backend, ensuring Company A can never access data belonging to Company B."*
 2.  **Threadpool File Processing**: *"PDF reading and text parsing can be heavily blocking operations in single-threaded Python environments. To prevent large document uploads from freezing the FastAPI main thread, we offloaded semantic chunking and embedding extraction to an asynchronous background worker pool, keeping the web server perfectly responsive."*
 3.  **Modern Client-Side Modals vs. Native Popups**: *"We built premium custom state-controlled glassmorphic modals for ticket deletion to replace native blocking alert boxes. Native blocking dialogs can cause event starvation and freeze JavaScript threads, whereas our custom modal guarantees seamless execution and maintains dark theme visual elegance."*
+
+---
+
+🔗 LIVE LINK : https://baas-platform-xi.vercel.app/
